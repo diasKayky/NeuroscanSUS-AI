@@ -1,2 +1,2 @@
 # Neuroscan-AI
-Neuroscan.AI is a AI-powered technology to aid physicians to diagnose brain tumors, namely glioma, meningioma and pituitary tumors. It is based on CNN architecture and deployed in web app.
+> Neuroscan.AI é uma tecnologia alimentada por inteligência artificial que foi desenvolvida para auxiliar médicos no diagnóstico de tumores cerebrais, especificamente os tumores glioma, meningioma e o tumor pituitário. É baseado em uma arquitetura de rede neural convolucional (CNN) e implantada em um aplicativo da web usando API Flask.
