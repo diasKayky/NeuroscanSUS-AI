@@ -1,8 +1,8 @@
-# Neuroscan.AI
+# NeuroscanSUS: IA para Diagnóstico de Tumores Cerebrais
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diasKayky/Neuroscan-AI/blob/main/LICENSE)
 
-> Neuroscan.AI é uma tecnologia alimentada por inteligência artificial que foi desenvolvida para auxiliar médicos do SUS no diagnóstico de tumores cerebrais, especificamente os tumores glioma, meningioma e o tumor pituitário. É baseado em uma arquitetura de rede neural convolucional (CNN) e implantada em um aplicativo da web usando API Flask.
+> NeuroscanSUS é uma tecnologia alimentada por inteligência artificial (IA) que foi desenvolvida para auxiliar médicos do SUS no diagnóstico de tumores cerebrais, especificamente os tumores glioma, meningioma e o tumor pituitário. É baseado em uma arquitetura de rede neural convolucional (CNN) e implantada em um aplicativo da web usando API Flask. O projeto é independente e não foi conduzido pelo Governo Brasileiro, mas espera-se contribuir com o diagnóstico médico auxiliado por IA.
 
 
 ##  💻 Desenvolvedor
