@@ -22,4 +22,6 @@
 
 ## 📜 Citações
 
-InCEAS (2nd International Conference on Engineering and Applied Sciences). (2020). Convolutional Neural Network for Brain Tumor Detection. In D. C. Febrianto, I. Soesanti, & H. A. Nugroho (Eds.), IOP Conf. Series: Materials Science and Engineering, 771(1), 012031. IOP Publishing. https://doi.org/10.1088/1757-899X/771/1/012031
+InCEAS (2nd International Conference on Engineering and Applied Sciences). (2020). <i>Convolutional Neural Network for Brain Tumor Detection</i>. In D. C. Febrianto, I. Soesanti, & H. A. Nugroho (Eds.), IOP Conf. Series: Materials Science and Engineering, 771(1), 012031. IOP Publishing. https://doi.org/10.1088/1757-899X/771/1/012031
+
+Sartaj Bhuvaji, Ankita Kadam, Prajakta Bhumkar, Sameer Dedge, &amp; Swati Kanchan. (2020). <i>Brain Tumor Classification (MRI)</i> [Data set]. Kaggle. https://doi.org/10.34740/KAGGLE/DSV/1183165
