@@ -35,11 +35,28 @@ class Gerador_Imagens:
         # Imagens de Teste
         imagens_teste = image_dataset_from_directory(
             self.diretorio_teste,
+            validation_split=.2,
+            subset="training",
+            seed=45,
             image_size=self.tamanho,
             batch_size=self.batch_size
         )
 
         return imagens_teste
+
+    def imagens_validacao(self):
+
+        # Imagens de Validação
+        imagens_validacao = image_dataset_from_directory(
+            self.diretorio_teste,
+            validation_split=.2,
+            seed=45,
+            subset="validation",
+            image_size=self.tamanho,
+            batch_size=self.batch_size
+        )
+
+        return imagens_validacao
 
 
 
@@ -55,6 +72,10 @@ def main():
     # Imagens de Teste
     imagens_teste = gerador.imagens_teste()
     imagens_teste.save("assets/imagens_teste")
+
+    # Imagens de Validação
+    imagens_validacao = gerador.imagens_validacao()
+    imagens_validacao.save("assets/imagens_validacao")
 
 if __name__ == "__main__":
     main()
