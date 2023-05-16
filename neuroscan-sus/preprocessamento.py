@@ -10,9 +10,9 @@ from tensorflow.keras.utils import image_dataset_from_directory
 
 class Gerador_Imagens:
     """
-    Classe que constroí o gerador de imagens de treino e teste
+    Classe que constrói o gerador de imagens de treino e teste
     """
-    def __init__(self, diretorio_treino, diretorio_teste, tamanho=(400, 400), batch_size=64):
+    def __init__(self, diretorio_treino, diretorio_teste, tamanho=(400, 400), batch_size=32):
 
         self.diretorio_treino = diretorio_treino
         self.diretorio_teste = diretorio_teste
