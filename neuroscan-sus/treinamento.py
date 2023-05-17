@@ -22,9 +22,11 @@ Modelo
 """
 
 params = {"neuronios": 64, "entrada":(400, 400, 3), "lr": .0001,
-          "kernel_size": (4, 4), "pool_size": (3, 3), "classes": 4}
+          "kernel_size": (2, 2), "pool_size": (2, 2), "classes": 4}
 
-modelo = Neuroscan_TF(params["neuronios"], params["entrada"], params["classes"])
+modelo = NeuroscanSUS(params["neuronios"], params["entrada"],
+                      params["kernel_size"], params["pool_size"], params["classes"])
+
 modelo = modelo.constroi_modelo()
 
 """
@@ -32,15 +34,15 @@ Compilação
 """
 
 loss = "sparse_categorical_crossentropy"
-otimizador = tf.keras.optimizers.RMSprop(learning_rate=params["lr"])
-epochs = 10
+otimizador = tf.keras.optimizers.Adam(learning_rate=params["lr"])
+epochs = 5
 
 # Compila o modelo
 modelo.compile(loss=loss, optimizer=otimizador, metrics=["accuracy"])
 
 # Callbacks
-early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=7)
-checkpoint = tf.keras.callbacks.ModelCheckpoint('modelos/modelo5.h5', monitor='val_accuracy', save_best_only=True)
+early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
+checkpoint = tf.keras.callbacks.ModelCheckpoint('modelos/modelo7.h5', monitor='val_accuracy', save_best_only=True)
 
 """
 Treinamento

@@ -25,25 +25,10 @@ class NeuroscanSUS:
 
         modelo = tf.keras.models.Sequential([
             tf.keras.layers.Rescaling(1. / 255),
-            tf.keras.layers.experimental.preprocessing.RandomFlip("horizontal"),
-            tf.keras.layers.experimental.preprocessing.RandomRotation(0.3),
-            tf.keras.layers.experimental.preprocessing.RandomZoom(0.3),
             tf.keras.layers.Conv2D(self.neuronios, input_shape=self.entrada,
                                    kernel_size=self.kernel_size, activation=self.ativacao),
             tf.keras.layers.MaxPool2D(pool_size=self.pool_size),
-            tf.keras.layers.Dropout(0.1),
-            tf.keras.layers.Conv2D(self.neuronios, input_shape=self.entrada,
-                                   kernel_size=self.kernel_size, activation=self.ativacao),
-            tf.keras.layers.MaxPool2D(pool_size=self.pool_size),
-            tf.keras.layers.Dropout(0.1),
-            tf.keras.layers.Conv2D(self.neuronios, input_shape=self.entrada,
-                                   kernel_size=self.kernel_size, activation=self.ativacao),
-            tf.keras.layers.MaxPool2D(pool_size=self.pool_size),
-            tf.keras.layers.Dropout(0.1),
             tf.keras.layers.Flatten(),
-            tf.keras.layers.Dense(4 * self.neuronios, activation=self.ativacao),
-            tf.keras.layers.Dense(self.neuronios, activation=self.ativacao),
-            tf.keras.layers.Dropout(0.1),
             tf.keras.layers.Dense(self.classes, activation="softmax")
         ])
 
