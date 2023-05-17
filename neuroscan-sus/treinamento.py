@@ -7,7 +7,6 @@ import numpy as np
 from datetime import datetime
 import tensorflow as tf
 from modelo import NeuroscanSUS
-from modelo_translearning import Neuroscan_TF
 
 """
 Dados de Treinamento
@@ -35,14 +34,14 @@ Compilação
 
 loss = "sparse_categorical_crossentropy"
 otimizador = tf.keras.optimizers.Adam(learning_rate=params["lr"])
-epochs = 5
+epochs = 6
 
 # Compila o modelo
 modelo.compile(loss=loss, optimizer=otimizador, metrics=["accuracy"])
 
 # Callbacks
-early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
-checkpoint = tf.keras.callbacks.ModelCheckpoint('modelos/modelo7.h5', monitor='val_accuracy', save_best_only=True)
+early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=6)
+checkpoint = tf.keras.callbacks.ModelCheckpoint('modelos/modelo3.h5', monitor='val_accuracy', save_best_only=True)
 
 """
 Treinamento

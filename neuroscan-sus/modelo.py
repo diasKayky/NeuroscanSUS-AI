@@ -28,6 +28,10 @@ class NeuroscanSUS:
             tf.keras.layers.Conv2D(self.neuronios, input_shape=self.entrada,
                                    kernel_size=self.kernel_size, activation=self.ativacao),
             tf.keras.layers.MaxPool2D(pool_size=self.pool_size),
+            tf.keras.layers.Conv2D(self.neuronios / 4, input_shape=self.entrada,
+                                   kernel_size=self.kernel_size, activation=self.ativacao),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.Activation(tf.keras.activations.relu),
             tf.keras.layers.Flatten(),
             tf.keras.layers.Dense(self.classes, activation="softmax")
         ])
