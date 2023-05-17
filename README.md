@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="https://github.com/diasKayky/NeuroscanSUS-AI/blob/main/logo.png" data-canonical-src="https://github.com/diasKayky/NeuroscanSUS-AI/blob/main/logo.png" width="300" style="text-align: center;"/>
+</p>
+
 # NeuroscanSUS: IA para Diagnóstico de Tumores Cerebrais
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diasKayky/Neuroscan-AI/blob/main/LICENSE)
