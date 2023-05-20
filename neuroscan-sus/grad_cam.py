@@ -30,7 +30,7 @@ class GradCAM:
         return x
 
     def calcula_gradcam(self, imagem):
-        imagem = self.preprocessa_input(imagem)
+
         imagem = tf.expand_dims(imagem, axis=0)
 
         with tf.GradientTape() as tape:
@@ -43,34 +43,41 @@ class GradCAM:
 
         conv_outputs = conv_outputs[0]
         heatmap = tf.reduce_sum(tf.multiply(pooled_grads, conv_outputs), axis=-1)
+
         heatmap = np.maximum(heatmap, 0)
-        heatmap /= np.max(heatmap)
+
+        # Normalize the heatmap
+        max_value = np.max(heatmap)
+        if max_value != 0:
+            heatmap /= max_value
+
 
         return heatmap
 
     def faz_gradcam(self, path_da_imagem=""):
-        # Imagem
-        imagem = cv2.imread(path_da_imagem, cv2.IMREAD_GRAYSCALE)
+
+        imagem = cv2.imread(path_da_imagem)
+
         if imagem is None:
             print(f"Falha ao carregar a imagem: {path_da_imagem}")
-            exit()
+            return 0
 
-        # Normaliza a imagem
-        imagem = cv2.cvtColor(imagem, cv2.COLOR_BGR2RGB)
+        # Preprocess the image
         imagem = cv2.resize(imagem, (400, 400))
-        imagem_normalizada = imagem.astype(np.float32) / 255.0
 
-        # Calcula GradCAM
-        heatmap = self.calcula_gradcam(imagem_normalizada)
+        # Calculate GradCAM
+        heatmap = self.calcula_gradcam(imagem)
 
-        # Normaliza o heatmap
+        # Normalize the heatmap
         heatmap = cv2.resize(heatmap, (imagem.shape[1], imagem.shape[0]))
-        heatmap = (heatmap - np.min(heatmap)) / (np.max(heatmap) - np.min(heatmap))
-        heatmap = np.uint8(heatmap * 255)
+        heatmap = (heatmap * 255).astype(np.uint8)
+
+        print(imagem.shape)
+        print(imagem.dtype)
 
         # Aplica o heatmap na imagem original
         heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_HSV)
-        imagem_com_gradcam = cv2.addWeighted(imagem, 0.5, heatmap, 0.5, 0)
+        imagem_com_gradcam = cv2.addWeighted(imagem, 0.65, heatmap, 0.35, 0)
 
         # Mostra imagem
         plt.imshow(imagem_com_gradcam)

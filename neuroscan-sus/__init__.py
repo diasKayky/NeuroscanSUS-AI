@@ -2,4 +2,4 @@
 # Autor: Kayky Santos (https://github.com/diasKayky)
 # 2023 - MIT License
 
-__version__ = "1.0.2"
+__version__ = "1.1.0"

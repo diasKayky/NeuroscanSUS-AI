@@ -15,7 +15,7 @@ from preprocessamento import *
 Assets
 """
 # Modelo treinado 1
-modelo = tf.keras.models.load_model("modelos/modelo.h5")
+modelo = tf.keras.models.load_model("modelos/modelo2.h5")
 
 # Dados de Teste
 gerador = Gerador_Imagens("dados/Training", "dados/Testing")
