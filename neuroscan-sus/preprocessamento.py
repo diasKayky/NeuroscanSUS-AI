@@ -58,16 +58,46 @@ class Gerador_Imagens:
 
         return imagens_validacao
 
+class Data_Augmentation:
+    """
+    Classe que faz aumento nos dados
+    """
+    def flip_image(self, image, label):
 
+        flipped_image = tf.image.flip_left_right(image)
+        return flipped_image, label
+
+    def adjust_brightness(self, image, label):
+
+        bright_image = tf.image.adjust_brightness(image, delta=0.2)
+        return bright_image, label
+
+    def rotate_image(self, image, label):
+
+        rotated_image = tf.image.rot90(image, tf.random.uniform(shape=[], minval=0, maxval=4, dtype=tf.int32))
+        return rotated_image, label
+
+    def apply_zoom(self, image, label):
+
+        zoomed_image = tf.image.central_crop(image, central_fraction=0.8)
+        image_shape = tf.shape(image)
+        zoomed_image = tf.image.resize(zoomed_image, size=[image_shape[0], image_shape[1]])
+        return zoomed_image, label
 
 def main():
 
-    # Gerador
+    # Gerador e Data Aug
     gerador = Gerador_Imagens("dados/Training", "dados/Testing")
+    data_aug = Data_Augmentation()
 
-    # Imagens de Treino
+    # Imagens de Treino + Data Augmentation
     imagens_treino = gerador.imagens_treino()
-    imagens_treino.save("assets/imagens_treino")
+    augmented_dataset = imagens_treino.map(data_aug.flip_image)
+    augmented_dataset = augmented_dataset.concatenate(imagens_treino.map(data_aug.adjust_brightness))
+    augmented_dataset = augmented_dataset.concatenate(imagens_treino.map(data_aug.rotate_image))
+    augmented_dataset = augmented_dataset.concatenate(imagens_treino.map(data_aug.apply_zoom))
+
+    augmented_dataset.save("assets/imagens_treino")
 
     # Imagens de Teste
     imagens_teste = gerador.imagens_teste()
