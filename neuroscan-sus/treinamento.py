@@ -56,14 +56,14 @@ Compilação
 
 loss = "categorical_crossentropy"
 otimizador = tf.keras.optimizers.Adam(learning_rate=params["lr"])
-epochs = 20
+epochs = 15
 
 # Compila o modelo
 modelo.compile(loss=loss, optimizer=otimizador, metrics=["accuracy"])
 
 # Callbacks
-early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=20)
-checkpoint = tf.keras.callbacks.ModelCheckpoint('modelos/modelo2.h5', monitor='val_accuracy', save_best_only=True)
+early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=14)
+checkpoint = tf.keras.callbacks.ModelCheckpoint('modelos/modelo3.h5', monitor='val_accuracy', save_best_only=True)
 
 
 """
